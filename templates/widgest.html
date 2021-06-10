@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content%} 
+       <div class="row">
+        <div class="col-sm-3">
+
+            <form method="POST",action=''>
+            {% csrf_token %}
+            {{fm.as_p}}
+            <input type='submit' class='btn btn-success'>
+            </form>
+        </div>
+        <div class="col-sm-9">
+          <h2 class='text-center alert alert-info'>Show student information</h2>
+          {% if stud %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Gender</th>
+                <th scope="col">ADD</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+          
+              {% for i in stud %}
+              <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.email}}</td>
+                <td>{{i.password}}</td>
+                <td>{{i.sub}}</td>
+                <td>{{i.add}}</td>
+                <td>
+                  <input type="button" value='Edit'>
+                  <form action="{% url 'delete2' i.id %}" method="POST" class='d-inline'>
+                    {% csrf_token %}
+                    <input type="submit" class='btn btn-danger bt-sm' value='Delete'> 
+                  </form>
+
+                </td>
+              </tr>
+              {% endfor %}
+               
+            </tbody>
+            
+          </table>
+        </div>
+        {% else%}
+        <h2 class='text-center alert alert-danger' >{{'No record found'}}</h2>
+        {% endif %}
+       </div>
+       <!-- <h2>
+        {% if messages %}
+           {% for i in messages %}
+             <span {% if i.tags %}  class="{{i.tags}}" {% endif %} >{{i}}</span>   <br>
+           {% endfor %}
+        {% endif %}
+       </h2> -->
+    
+    {% endblock content %}  
+    

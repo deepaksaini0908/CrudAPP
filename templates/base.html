@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content="width=device-width,initial-scale=1.0">
+        <title>Crud Project </title>
+        <link rel='stylesheet' href="{% static 'css/bootstrap.css' %}">
+        <style>
+           .success{color:green} 
+           .info{color:red}
+           .warning{color:cyan}
+           .error{color:darkorchidjj}
+            
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5 ">
+         <h2 class="text-center alert alert-danger"> Function Based View ModelForm Crued Project</h2>  
+         {% block content%} {% endblock content %}  
+        </div>
+
+       <script src="{% static 'js/jquery.js' %}"></script>
+       <script src="{% static 'js/popper.js' %}"></script>
+       <script src="{% static 'js/bootstrap.js' %}"></script>
+
+
+
+    </body>
+
+</html>
